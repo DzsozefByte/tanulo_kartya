@@ -4,8 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanulókártya</title>
+    <link rel="stylesheet" href="tanulo.css">
+
+
+</head>
 </head>
 <body>
-    <h1>Tanulókártya</h1>
+    <header id="bevezeto">
+        <h1><center>Tanulókártya</center></h1>
+        <h2><center>Fővárosok</center></h2>
+    </header>
+
+    <div class="container" id="grid-container"></div>
+
+<script>
+const content = [
+    { text: "Mi Magyarország fővárosa?", answer: "Budapest" },
+    { text: "Mi Franciaország fővárosa?", answer: "Párizs" },
+    { text: "Mi Olaszország fővárosa?", answer: "Róma" },
+    { text: "Mi Japán fővárosa?", answer: "Tokió" },
+    { text: "Mi Spanyolország fővárosa?", answer: "Madrid" },
+    { text: "Mi Kína fővárosa?", answer: "Peking" }
+];
+
+const container = document.getElementById('grid-container');
+
+content.forEach(item => {
+    const box = document.createElement('div');
+    box.className = 'box';
+    box.innerHTML = `
+        <p>${item.text}</p>
+        <button>Mutasd/Rejtsd el</button>
+        <p class="message" style="display: none;">${item.answer}</p>
+    `;
+
+    const button = box.querySelector('button');
+    const message = box.querySelector('.message');
+
+    button.addEventListener('click', function() {
+        message.style.display = message.style.display === 'none' ? 'block' : 'none';
+    });
+
+    container.appendChild(box);
+});
+
+</script>
+
+
+
+
+    <script src="tanulo.js"></script>
 </body>
 </html>
